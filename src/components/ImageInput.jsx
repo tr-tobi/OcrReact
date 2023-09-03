@@ -17,13 +17,11 @@ const ImageInput = () => {
       })
       .then((result) => {
         setText(result.text);
-        console.log(result);
       });
   };
 
   const handleChange = (event) => {
     setUrl(event.target.value);
-    console.log(event.target.value);
   };
 
   return (
