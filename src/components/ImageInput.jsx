@@ -9,7 +9,10 @@ const ImageInput = () => {
   const [url, setUrl] = useState("");
   const [text, setText] = useState("");
 
+  const [hide, setHide] = useState(true);
+
   const handleSubmit = (event) => {
+    setHide(false);
     event.preventDefault();
     optiic
       .process({
@@ -17,6 +20,7 @@ const ImageInput = () => {
       })
       .then((result) => {
         setText(result.text);
+        setHide(true);
       });
   };
 
@@ -25,21 +29,38 @@ const ImageInput = () => {
   };
 
   return (
-    <>
+    <div className="card">
       <form>
-        <label htmlFor="choose-url">Enter Image Link</label>
-        <input
-          type="text"
-          id="choose-url"
-          value={url}
-          onChange={handleChange}
-        />
-        <button onClick={handleSubmit} className="submit2">
-          Submit
-        </button>
+        <div className="center">
+          <label className="subtitle is-4" htmlFor="choose-url">
+            Enter Image Link Address:
+          </label>
+          <input
+            className="input is-success"
+            type="text"
+            id="choose-url"
+            value={url}
+            onChange={handleChange}
+          />
+          <button onClick={handleSubmit} className="submit2 button is-success">
+            Submit
+          </button>
+          <div hidden={hide}>
+            <progress className="progress is-medium is-primary" max="100">
+              15%
+            </progress>
+          </div>
+        </div>
       </form>
-      <textarea value={text} disabled id="" cols="30" rows="10"></textarea>
-    </>
+      <textarea
+        className="textarea is-primary"
+        value={text}
+        disabled
+        id=""
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
   );
 };
 
