@@ -8,7 +8,7 @@ let optiic = new Optiic({
 const ImageInput = () => {
   const [url, setUrl] = useState("");
   const [text, setText] = useState("");
-
+  const [isError, setIsError] = useState(false);
   const [hide, setHide] = useState(true);
 
   const handleSubmit = (event) => {
@@ -21,12 +21,24 @@ const ImageInput = () => {
       .then((result) => {
         setText(result.text);
         setHide(true);
+      })
+      .catch((err) => {
+        setHide(true);
+        setIsError(true);
       });
   };
 
   const handleChange = (event) => {
     setUrl(event.target.value);
   };
+
+  if (isError) {
+    return (
+      <p className="has-text-danger">
+        Request limit has been reached! Please come back and try again tomorrow.
+      </p>
+    );
+  }
 
   return (
     <div className="card">
