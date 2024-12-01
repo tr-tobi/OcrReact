@@ -35,7 +35,8 @@ const ImageInput = () => {
   if (isError) {
     return (
       <p className="has-text-danger">
-        Request limit has been reached! Please come back and try again tomorrow.
+        Request limit has been reached!! Please come back and try again
+        tomorrow.
       </p>
     );
   }
