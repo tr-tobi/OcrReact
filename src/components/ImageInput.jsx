@@ -38,7 +38,6 @@ const ImageInput = () => {
         Request limit has been reached! Please come back and try again tomorrow.
       </p>
     );
-    //test
   }
 
   return (
