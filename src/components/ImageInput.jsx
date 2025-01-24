@@ -22,7 +22,7 @@ const ImageInput = () => {
         setText(result.text);
         setHide(true);
       })
-      .catch(() => {
+      .catch((err) => {
         setHide(true);
         setIsError(true);
       });
